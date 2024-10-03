@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:quadb_test_app/services/app_Urls.dart';
+import 'package:movie_app/services/app_Urls.dart';
 
 import '../Model/movieModel.dart';
 

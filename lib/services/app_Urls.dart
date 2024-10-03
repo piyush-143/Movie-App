@@ -6,9 +6,6 @@ class AppUrls {
     return '$baseUrl$movieName';
   }
 
-
-
   static String errorImageUrl =
-      'https://www.legrand.com.kh/modules/custom/legrand_ecat/assets/img/no-image.png';
-
+      'https://static.vecteezy.com/system/resources/thumbnails/022/059/000/small/no-image-available-icon-vector.jpg';
 }

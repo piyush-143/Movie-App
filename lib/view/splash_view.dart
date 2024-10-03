@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:quadb_test_app/widgets/bottom_navigation_bar.dart';
+
+import '../widgets/bottom_navigation_bar.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});

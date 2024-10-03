@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quadb_test_app/view/home_view.dart';
 
+import '../view/home_view.dart';
 import '../view/search_view.dart';
 
 class BottomNavigation extends StatelessWidget {

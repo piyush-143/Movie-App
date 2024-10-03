@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quadb_test_app/view/splash_view.dart';
-import 'package:quadb_test_app/view_model/movie_view_model.dart';
+import 'package:movie_app/view/splash_view.dart';
+import 'package:movie_app/view_model/movie_view_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => MovieViewModel()),
       ],
       child: MaterialApp(
-        title: 'Quad B Test App',
+        title: 'Movie App',
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.dark,
         theme: ThemeData(

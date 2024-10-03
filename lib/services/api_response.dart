@@ -1,4 +1,4 @@
-import 'package:quadb_test_app/services/status.dart';
+import 'package:movie_app/services/status.dart';
 
 class ApiResponse<T> {
   String? message;

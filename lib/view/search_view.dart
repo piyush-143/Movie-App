@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/services/api_response.dart';
+import 'package:movie_app/view/detail_view.dart';
 import 'package:provider/provider.dart';
-import 'package:quadb_test_app/Model/movieModel.dart';
-import 'package:quadb_test_app/services/api_response.dart';
-import 'package:quadb_test_app/services/api_services.dart';
-import 'package:quadb_test_app/view/detail_view.dart';
-import 'package:quadb_test_app/view_model/movie_view_model.dart';
 
+import '../Model/movieModel.dart';
+import '../services/api_services.dart';
 import '../services/app_Urls.dart';
+import '../view_model/movie_view_model.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({super.key});
@@ -28,6 +28,7 @@ class _SearchViewState extends State<SearchView> {
 
   @override
   Widget build(BuildContext context) {
+    final searchProvider = Provider.of<MovieViewModel>(context, listen: false);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -40,33 +41,32 @@ class _SearchViewState extends State<SearchView> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Consumer<MovieViewModel>(
-                  builder: (context, value, child) => TextFormField(
-                    controller: searchController,
-                    onChanged: (val) {
-                      value.setSelectedMovieLoading(ApiResponse.completed(val));
-                    },
-                    cursorHeight: 40,
-                    decoration: InputDecoration(
-                      prefixIcon: const Padding(
-                        padding: EdgeInsets.only(left: 8.0),
-                        child: Icon(
-                          Icons.search,
-                          color: Colors.white54,
-                        ),
+                child: TextFormField(
+                  controller: searchController,
+                  onChanged: (val) {
+                    searchProvider.setSelectedMovieLoading(
+                        ApiResponse.completed(val.toString()));
+                  },
+                  cursorHeight: 40,
+                  decoration: InputDecoration(
+                    prefixIcon: const Padding(
+                      padding: EdgeInsets.only(left: 8.0),
+                      child: Icon(
+                        Icons.search,
+                        color: Colors.white54,
                       ),
-                      contentPadding: const EdgeInsets.symmetric(vertical: 2),
-                      hintText: 'Search the country',
-                      hintStyle: const TextStyle(height: 2.7),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: const BorderSide(color: Colors.white38)),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: const BorderSide(color: Colors.red)),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5)),
                     ),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 2),
+                    hintText: 'Search the country',
+                    hintStyle: const TextStyle(height: 2.7),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide: const BorderSide(color: Colors.white38)),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide: const BorderSide(color: Colors.red)),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5)),
                   ),
                 ),
               ),

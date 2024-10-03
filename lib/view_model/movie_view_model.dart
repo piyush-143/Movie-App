@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quadb_test_app/services/api_response.dart';
-import 'package:quadb_test_app/services/api_services.dart';
+import 'package:movie_app/services/api_response.dart';
+import 'package:movie_app/services/api_services.dart';
 
 import '../Model/movieModel.dart';
 
@@ -25,11 +25,12 @@ class MovieViewModel with ChangeNotifier {
     });
   }
 
-  ApiResponse<dynamic> selectedMovieList = ApiResponse.loading();
+  ApiResponse<String> selectedMovieList = ApiResponse.loading();
 
-  setSelectedMovieLoading(ApiResponse<dynamic> response) async {
+  setSelectedMovieLoading(ApiResponse<String> response) async {
+    //await Future.delayed(const Duration(milliseconds: 10), () {});
     selectedMovieList = response;
-    await Future.delayed(const Duration(milliseconds: 10), () {});
+
     notifyListeners();
   }
 
@@ -37,7 +38,7 @@ class MovieViewModel with ChangeNotifier {
     setSelectedMovieLoading(ApiResponse.loading());
 
     _movieApiService.getSelectedMovie(movieName).then((value) {
-      setSelectedMovieLoading(ApiResponse.completed(value));
+      setSelectedMovieLoading(ApiResponse.completed(value.toString()));
     }).onError((error, stackTrace) {
       setSelectedMovieLoading(ApiResponse.error(error.toString()));
     });
