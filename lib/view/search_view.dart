@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/Model/movieModel.dart';
 import 'package:movie_app/services/api_response.dart';
 import 'package:movie_app/view/detail_view.dart';
-import 'package:movie_app/view/home_view.dart';
 import 'package:provider/provider.dart';
 import '../services/api_services.dart';
 import '../services/app_Urls.dart';
@@ -89,10 +88,10 @@ class _SearchViewState extends State<SearchView> {
               ),
               searchController.text.isEmpty
                   ? Expanded(
-                    child: FutureBuilder(
+                      child: FutureBuilder(
                         future: selectedMovieService.getMovieModelList(),
-                        builder:
-                            (context, AsyncSnapshot<List<MovieModel>> snapshot) {
+                        builder: (context,
+                            AsyncSnapshot<List<MovieModel>> snapshot) {
                           if (!snapshot.hasData) {
                             return Center(
                                 child: CircularProgressIndicator(
@@ -102,7 +101,6 @@ class _SearchViewState extends State<SearchView> {
                             return ListView.builder(
                               itemCount: snapshot.data!.length,
                               itemBuilder: (context, index) {
-
                                 return InkWell(
                                   onTap: () {
                                     Navigator.push(
@@ -114,13 +112,13 @@ class _SearchViewState extends State<SearchView> {
                                             summary: snapshot
                                                 .data![index].show!.summary
                                                 .toString(),
-                                            image: snapshot.data![index].show!
-                                                        .image !=
-                                                    null
-                                                ? snapshot.data![index].show!
-                                                    .image!.original
-                                                    .toString()
-                                                : AppUrls.errorImageUrl,
+                                            image:
+                                                snapshot.data![index].show!.image !=
+                                                        null
+                                                    ? snapshot.data![index]
+                                                        .show!.image!.original
+                                                        .toString()
+                                                    : AppUrls.errorImageUrl,
                                             genres: snapshot
                                                 .data![index].show!.genres,
                                             officialSite: snapshot
@@ -147,15 +145,16 @@ class _SearchViewState extends State<SearchView> {
                                                             .show!
                                                             .image !=
                                                         null
-                                                    ? snapshot.data![index].show!
-                                                        .image!.original
+                                                    ? snapshot.data![index]
+                                                        .show!.image!.original
                                                         .toString()
                                                     : AppUrls.errorImageUrl),
                                                 fit: BoxFit.fill,
                                               )),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsets.all(10.0),
+                                              padding:
+                                                  const EdgeInsets.all(10.0),
                                               child: Text(snapshot
                                                   .data![index].show!.name
                                                   .toString()),
@@ -171,7 +170,7 @@ class _SearchViewState extends State<SearchView> {
                           }
                         },
                       ),
-                  )
+                    )
                   : Expanded(
                       child: FutureBuilder(
                         future: selectedMovieService
