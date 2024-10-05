@@ -24,18 +24,12 @@ class ApiServices {
   }
 
   Future<List<dynamic>> getSelectedMovie(String movieName) async {
-    var data;
-    try {
-      final response =
-          await http.get(Uri.parse(AppUrls().movieName(movieName)));
-      if (response.statusCode == 200) {
-        await Future.delayed(const Duration(milliseconds: 100));
-        data = jsonDecode(response.body.toString());
-        return data;
-      }
-    } catch (e) {
-      throw (e.toString());
+    final response = await http.get(Uri.parse(AppUrls().movieName(movieName)));
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body.toString());
+      return data;
+    } else {
+      throw Exception("Error!!!");
     }
-    return data;
   }
 }

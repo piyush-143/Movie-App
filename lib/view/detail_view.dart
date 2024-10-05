@@ -7,7 +7,7 @@ import '../services/app_Urls.dart';
 class SelectedMovieDetailView extends StatefulWidget {
   String name, premiered, summary, officialSite;
   String? image;
-  List<String> genres;
+  dynamic genres;
   SelectedMovieDetailView(
       {super.key,
       required this.name,
@@ -46,6 +46,7 @@ class _SelectedMovieDetailViewState extends State<SelectedMovieDetailView> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
+                    hoverColor: Colors.black38,
                     icon: const Icon(
                       Icons.arrow_back_ios_sharp,
                       color: Colors.white,
@@ -75,6 +76,7 @@ class _SelectedMovieDetailViewState extends State<SelectedMovieDetailView> {
                       widget.genres.toString(),
                       style:
                           const TextStyle(fontSize: 18, color: Colors.white38),
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),

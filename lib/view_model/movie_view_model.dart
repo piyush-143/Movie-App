@@ -28,7 +28,7 @@ class MovieViewModel with ChangeNotifier {
   ApiResponse<String> selectedMovieList = ApiResponse.loading();
 
   setSelectedMovieLoading(ApiResponse<String> response) async {
-    //await Future.delayed(const Duration(milliseconds: 10), () {});
+    await Future.delayed(const Duration(milliseconds: 10), () {});
     selectedMovieList = response;
 
     notifyListeners();

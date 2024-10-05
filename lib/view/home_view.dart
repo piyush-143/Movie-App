@@ -32,9 +32,10 @@ class _HomeViewState extends State<HomeView> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.push(context,
+              Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) => const SearchView()));
             },
+            padding: EdgeInsetsDirectional.symmetric(horizontal: 20),
             icon: const Icon(
               Icons.search,
               size: 30,
