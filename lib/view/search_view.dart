@@ -87,18 +87,21 @@ class _SearchViewState extends State<SearchView> {
                 ),
               ),
               searchController.text.isEmpty
-                  ? Expanded(
-                      child: FutureBuilder(
-                        future: selectedMovieService.getMovieModelList(),
-                        builder: (context,
-                            AsyncSnapshot<List<MovieModel>> snapshot) {
-                          if (!snapshot.hasData) {
-                            return Center(
-                                child: CircularProgressIndicator(
-                              color: Colors.red,
-                            ));
-                          } else {
-                            return ListView.builder(
+                  ? FutureBuilder(
+                      future: selectedMovieService.getMovieModelList(),
+                      builder:
+                          (context, AsyncSnapshot<List<MovieModel>> snapshot) {
+                        if (!snapshot.hasData) {
+                          return Expanded(
+                            child: Center(
+                              child: CircularProgressIndicator(
+                                color: Colors.red,
+                              ),
+                            ),
+                          );
+                        } else {
+                          return Expanded(
+                            child: ListView.builder(
                               itemCount: snapshot.data!.length,
                               itemBuilder: (context, index) {
                                 return InkWell(
@@ -129,47 +132,44 @@ class _SearchViewState extends State<SearchView> {
                                     );
                                   },
                                   hoverColor: Colors.white10,
-                                  child: Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: SizedBox(
-                                        height: 130,
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              width: 100,
-                                              decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                image: NetworkImage(snapshot
-                                                            .data![index]
-                                                            .show!
-                                                            .image !=
-                                                        null
-                                                    ? snapshot.data![index]
-                                                        .show!.image!.original
-                                                        .toString()
-                                                    : AppUrls.errorImageUrl),
-                                                fit: BoxFit.fill,
-                                              )),
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(10.0),
-                                              child: Text(snapshot
-                                                  .data![index].show!.name
-                                                  .toString()),
-                                            )
-                                          ],
-                                        ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: SizedBox(
+                                      height: 130,
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            width: 100,
+                                            decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                              image: NetworkImage(snapshot
+                                                          .data![index]
+                                                          .show!
+                                                          .image !=
+                                                      null
+                                                  ? snapshot.data![index].show!
+                                                      .image!.original
+                                                      .toString()
+                                                  : AppUrls.errorImageUrl),
+                                              fit: BoxFit.fill,
+                                            )),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Text(snapshot
+                                                .data![index].show!.name
+                                                .toString()),
+                                          )
+                                        ],
                                       ),
                                     ),
                                   ),
                                 );
                               },
-                            );
-                          }
-                        },
-                      ),
+                            ),
+                          );
+                        }
+                      },
                     )
                   : Expanded(
                       child: FutureBuilder(

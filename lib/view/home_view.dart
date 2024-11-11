@@ -30,17 +30,41 @@ class _HomeViewState extends State<HomeView> {
         ),
         backgroundColor: Colors.black,
         actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const SearchView()));
-            },
-            padding: EdgeInsetsDirectional.symmetric(horizontal: 20),
-            icon: const Icon(
-              Icons.search,
-              size: 30,
+          Padding(
+            padding: const EdgeInsets.only(right: 15.0, top: 10),
+            child: OutlinedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SearchView()));
+              },
+              style: ButtonStyle(
+                shape: WidgetStatePropertyAll(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                ),
+                minimumSize: WidgetStatePropertyAll(Size(180, 45)),
+              ),
+
+              child: Row(
+                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.search,
+                    color: Colors.white54,
+                    size: 25,
+                  ),
+                  Text(
+                    'Search',
+                    style: TextStyle(fontSize: 17, color: Colors.white54),
+                  )
+                ],
+              ),
+              // color: Colors.white,
             ),
-            color: Colors.white,
           )
         ],
       ),
