@@ -45,7 +45,7 @@ class _HomeViewState extends State<HomeView> {
                     borderRadius: BorderRadius.circular(5),
                   ),
                 ),
-                minimumSize: WidgetStatePropertyAll(Size(180, 45)),
+                minimumSize: WidgetStatePropertyAll(Size(180, 40)),
               ),
 
               child: Row(

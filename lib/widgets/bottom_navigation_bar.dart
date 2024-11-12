@@ -27,7 +27,7 @@ class BottomNavigation extends StatelessWidget {
                 text: "Search",
               ),
             ],
-            unselectedLabelColor: Colors.white30,
+            unselectedLabelColor: Colors.white54,
             labelColor: Colors.white,
             indicatorColor: Colors.white,
           ),
