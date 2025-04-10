@@ -5,6 +5,10 @@ A Flutter application that fetches movie data from a public API and utilizes the
 ## Overview
 
 This Movie App allows users to browse and view details of various movies, and also provides the functionality to search for specific movies. It demonstrates a clean architecture by separating the UI, business logic, and data fetching layers. Provider is used to efficiently manage the application's state and make data accessible across different widgets.
+## Screenshots
+<img src="https://github.com/user-attachments/assets/3777f496-9492-4ed3-b83f-4ef2b160c428" data-canonical-src="https://github.com/user-attachments/assets/3777f496-9492-4ed3-b83f-4ef2b160c428" width="200" height="340" />
+<img src="https://github.com/user-attachments/assets/9b8d2cc1-994d-4bb5-b413-7e50c5f0576a" data-canonical-src="https://github.com/user-attachments/assets/9b8d2cc1-994d-4bb5-b413-7e50c5f0576a" width="200" height="340" />
+<img src="https://github.com/user-attachments/assets/a60cff8d-7bf7-4d96-9185-6335d5baf8b7" data-canonical-src="https://github.com/user-attachments/assets/a60cff8d-7bf7-4d96-9185-6335d5baf8b7" width="200" height="340" />
 
 ## Features
 
@@ -15,11 +19,6 @@ This Movie App allows users to browse and view details of various movies, and al
 * **State Management with Provider:** Implements Provider for managing the application's state, ensuring efficient data sharing and UI updates.
 * **Clean Architecture:** Separates concerns for better maintainability and testability.
 * **Splash Screen Animation:** Engaging splash screen animation using Lottie.
-
-## Screenshots
-<img src="https://github.com/user-attachments/assets/3777f496-9492-4ed3-b83f-4ef2b160c428" data-canonical-src="https://github.com/user-attachments/assets/3777f496-9492-4ed3-b83f-4ef2b160c428" width="200" height="340" />
-<img src="https://github.com/user-attachments/assets/9b8d2cc1-994d-4bb5-b413-7e50c5f0576a" data-canonical-src="https://github.com/user-attachments/assets/9b8d2cc1-994d-4bb5-b413-7e50c5f0576a" width="200" height="340" />
-<img src="https://github.com/user-attachments/assets/a60cff8d-7bf7-4d96-9185-6335d5baf8b7" data-canonical-src="https://github.com/user-attachments/assets/a60cff8d-7bf7-4d96-9185-6335d5baf8b7" width="200" height="340" />
 
 ## Technologies Used
 
