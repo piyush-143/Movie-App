@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import '../services/app_Urls.dart';
 
 class SelectedMovieDetailView extends StatefulWidget {
-  String name, premiered, summary, officialSite;
-  String? image;
-  dynamic genres;
-  SelectedMovieDetailView(
+  final String name, premiered, summary, officialSite;
+  final String? image;
+  final dynamic genres;
+  const SelectedMovieDetailView(
       {super.key,
       required this.name,
       required this.summary,

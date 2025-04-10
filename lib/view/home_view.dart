@@ -24,17 +24,18 @@ class _HomeViewState extends State<HomeView> {
         title: const Text(
           "MOVIEAPP",
           style: TextStyle(
-            color: Colors.red,
+            color: Colors.redAccent,
             fontWeight: FontWeight.bold,
           ),
         ),
         backgroundColor: Colors.black,
+        automaticallyImplyLeading: false,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 15.0, top: 10),
             child: OutlinedButton(
               onPressed: () {
-                Navigator.pushReplacement(
+                Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => const SearchView()));
@@ -49,7 +50,6 @@ class _HomeViewState extends State<HomeView> {
               ),
 
               child: Row(
-                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Icon(
@@ -77,7 +77,7 @@ class _HomeViewState extends State<HomeView> {
               case Status.LOADING:
                 return const Center(
                   child: CircularProgressIndicator(
-                    color: Colors.red,
+                    color: Colors.redAccent,
                   ),
                 );
               case Status.ERROR:
@@ -135,7 +135,7 @@ class _HomeViewState extends State<HomeView> {
                             child: Container(
                               width: 350,
                               decoration: BoxDecoration(
-                                color: Colors.red,
+                                color: Colors.red.shade400,
                                 image: DecorationImage(
                                     image: NetworkImage(
                                       value.movieList.data![index].show?.image
@@ -219,7 +219,7 @@ class _HomeViewState extends State<HomeView> {
                                   height: 170,
                                   width: 115,
                                   decoration: BoxDecoration(
-                                    color: Colors.red,
+                                    color: Colors.red.shade400,
                                     image: DecorationImage(
                                         image: NetworkImage(
                                           value.movieList.data![index].show

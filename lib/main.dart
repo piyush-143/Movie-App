@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:movie_app/view/splash_view.dart';
 import 'package:movie_app/view_model/movie_view_model.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   HttpOverrides.global = MyHttpOverrides();

@@ -3,6 +3,7 @@ import 'package:movie_app/Model/movieModel.dart';
 import 'package:movie_app/services/api_response.dart';
 import 'package:movie_app/view/detail_view.dart';
 import 'package:provider/provider.dart';
+
 import '../services/api_services.dart';
 import '../services/app_Urls.dart';
 import '../view_model/movie_view_model.dart';
@@ -33,6 +34,7 @@ class _SearchViewState extends State<SearchView> {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
+          toolbarHeight: 50,
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           leading: IconButton(
             onPressed: () {
@@ -54,7 +56,7 @@ class _SearchViewState extends State<SearchView> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: TextFormField(
                   controller: searchController,
                   onChanged: (val) {
@@ -74,7 +76,7 @@ class _SearchViewState extends State<SearchView> {
                     contentPadding: const EdgeInsets.symmetric(vertical: 2),
                     hintText: 'Search the country',
                     hintStyle:
-                        const TextStyle(height: 2.7, color: Colors.white54),
+                        const TextStyle(height: 2.1, color: Colors.white54),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
                         borderSide: const BorderSide(color: Colors.white38)),
@@ -86,6 +88,7 @@ class _SearchViewState extends State<SearchView> {
                   ),
                 ),
               ),
+              SizedBox(height: 10),
               searchController.text.isEmpty
                   ? FutureBuilder(
                       future: selectedMovieService.getMovieModelList(),
@@ -95,7 +98,7 @@ class _SearchViewState extends State<SearchView> {
                           return Expanded(
                             child: Center(
                               child: CircularProgressIndicator(
-                                color: Colors.red,
+                                color: Colors.redAccent,
                               ),
                             ),
                           );
@@ -135,7 +138,7 @@ class _SearchViewState extends State<SearchView> {
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: SizedBox(
-                                      height: 130,
+                                      height: 120,
                                       child: Row(
                                         children: [
                                           Container(
@@ -171,19 +174,19 @@ class _SearchViewState extends State<SearchView> {
                         }
                       },
                     )
-                  : Expanded(
-                      child: FutureBuilder(
-                        future: selectedMovieService
-                            .getSelectedMovie(searchController.text.toString()),
-                        builder:
-                            (context, AsyncSnapshot<List<dynamic>> snapshot) {
-                          if (!snapshot.hasData) {
-                            return Center(
-                                child: CircularProgressIndicator(
-                              color: Colors.red,
-                            ));
-                          } else {
-                            return ListView.builder(
+                  : FutureBuilder(
+                      future: selectedMovieService
+                          .getSelectedMovie(searchController.text.toString()),
+                      builder:
+                          (context, AsyncSnapshot<List<dynamic>> snapshot) {
+                        if (!snapshot.hasData) {
+                          return Center(
+                              child: CircularProgressIndicator(
+                            color: Colors.red,
+                          ));
+                        } else {
+                          return Expanded(
+                            child: ListView.builder(
                               itemCount: snapshot.data!.length,
                               itemBuilder: (context, index) {
                                 String searchedMovie = snapshot.data![index]
@@ -216,40 +219,36 @@ class _SearchViewState extends State<SearchView> {
                                       );
                                     },
                                     hoverColor: Colors.white10,
-                                    child: Expanded(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: SizedBox(
-                                          height: 130,
-                                          child: Row(
-                                            children: [
-                                              Container(
-                                                width: 100,
-                                                decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                  image: NetworkImage(snapshot
-                                                                      .data![
-                                                                  index]['show']
-                                                              ['image'] !=
-                                                          null
-                                                      ? snapshot.data![index]
-                                                              ['show']['image']
-                                                              ['original']
-                                                          .toString()
-                                                      : AppUrls.errorImageUrl),
-                                                  fit: BoxFit.fill,
-                                                )),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(10.0),
-                                                child: Text(snapshot
-                                                    .data![index]['show']
-                                                        ['name']
-                                                    .toString()),
-                                              )
-                                            ],
-                                          ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: SizedBox(
+                                        height: 120,
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              width: 100,
+                                              decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                image: NetworkImage(snapshot
+                                                                .data![index]
+                                                            ['show']['image'] !=
+                                                        null
+                                                    ? snapshot.data![index]
+                                                            ['show']['image']
+                                                            ['original']
+                                                        .toString()
+                                                    : AppUrls.errorImageUrl),
+                                                fit: BoxFit.fill,
+                                              )),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(10.0),
+                                              child: Text(snapshot.data![index]
+                                                      ['show']['name']
+                                                  .toString()),
+                                            )
+                                          ],
                                         ),
                                       ),
                                     ),
@@ -258,10 +257,10 @@ class _SearchViewState extends State<SearchView> {
                                   return Container();
                                 }
                               },
-                            );
-                          }
-                        },
-                      ),
+                            ),
+                          );
+                        }
+                      },
                     )
             ],
           ),

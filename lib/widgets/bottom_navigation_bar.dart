@@ -13,7 +13,7 @@ class BottomNavigation extends StatelessWidget {
       child: Scaffold(
         bottomNavigationBar: Container(
           color: Colors.black,
-          height: 80,
+          height: 70,
           child: const TabBar(
             tabs: [
               Tab(
